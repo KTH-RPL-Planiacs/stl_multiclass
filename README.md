@@ -61,13 +61,13 @@ We generated 100 trajectories for each of the classes {c1}, {c2} and {c3}, and 5
 
 ![Alt text](experiments_img/synthetic_data_map.PNG)
 
-We evaluated our methods over these classes by cross-validation (on 5 folds), for of our baseline (dt), and STL-difference (dtΔ) methods comparedto a classical neural networks approach (nn), where H represents the results in terms of hamming loss, and A the results in terms of example accuracy:
+We evaluated our methods over these classes by cross-validation (on 5 folds), for of our baseline (dt), and STL-difference (dtΔ) methods compared to a classical neural networks approach (nn), where H represents the results in terms of hamming loss, and A the results in terms of example accuracy:
 
 ![Alt text](experiments_img/synthetic_data_res_cv.PNG)
 
 Finally, we could learn the following models:
 
-![Alt text](experiments_img/synthetic_data_models.PNG)
+![Alt text](experiments_img/synthetic_data_models.png)
 
 
 
@@ -75,9 +75,27 @@ Finally, we could learn the following models:
 
 We ran experiments on a dataset of trajectories collected through an online study where participants had to avoid colliding with a robot in a shared environment, and where the participants depicted 3 behaviors: being in a hurry, taking a normal walk, or maximizing safety.
 
-![Alt text](experiments_img/userstudy_data_screenshot.png)
+![Alt text](experiments_img/userstudy_data_screenshot.PNG)
 
+We collected a total of 900 trajectories (50 participants x 6 trials x 3 motivations). After filtering out outliers, we used 842 trajectories.
+Since participants may have different conceptions and descriptions of the different behaviors, we notice some overlaps in the trajectories they depict. Indeed, some participant's trajectories under the "carrying something fragile" mode might overlap the behavior of participants when they are “taking a normal walk”. Therefore, we want to associate these multiple labels to such trajectories.
+The dataset is composed as follows (where 'f' is the "safety first" motivation, 'w' is the "taking a walk" motivation and 'h' is the "being in a hurry" motivation):
 
+![Alt text](experiments_img/userstudy_data_datacomposition.PNG)
+
+We evaluated our methods over the user study data by cross-validation (on 5 folds), for of our baseline (dt), and STL-difference (dtΔ) methods compared to a classical neural networks approach (nn), where H represents the results in terms of hamming loss, and A the results in terms of example accuracy. The maximum height of the decision trees was set to 5:
+
+![Alt text](experiments_img/userstudy_data_res_cvh5.PNG)
+
+Here the results obtained with a maximum height of the decision trees set to 10:
+
+![Alt text](experiments_img/userstudy_data_res_cvh10.PNG)
+
+On the whole dataset, we could learn the following models. Results of the classification of the signals are shown by the confusion matrix below the models:
+
+![Alt text](experiments_img/userstudy_data_models.png)
+
+![Alt text](experiments_img/userstudy_data_cm.PNG)
 
 
 ## Publications
