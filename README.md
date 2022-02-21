@@ -50,6 +50,7 @@ dtlearn = DTLearn(dict_trajectories,
 				  max_y, 
 				  max_h, 
 				  max_depth,
+				  stl_diff,
 				  verbose)
 tree = dtlearn.recursiveGenerateTree(train_trajectories)
 ```
@@ -61,10 +62,11 @@ Which first instantiates a `DTLearn` object:
 * `min_y`: lowerbound of trajectories' values on the y-axis (or lowerbound search of specifications on the y-axis).
 * `min_h`: lowerbound of target specifications' horizon.
 * `max_x`: upperbound of trajectories' values on the x-axis (or upperbound search of specifications on the x-axis).
-* `max_y`: upperbound of trajectories' values on the y-axis (or upperbound search of specifications on the y-axis)
+* `max_y`: upperbound of trajectories' values on the y-axis (or upperbound search of specifications on the y-axis).
 * `max_h`: upperbound of target specifications' horizon.
 * `max_depth` (optional): termination criterion -- the maximum depth of the decision tree (default set to `5`).
-* `verbose` (optional): print details on the execution of the algorithm (default set to `False`)
+* `stl_diff` (optional): if uses the STL difference based prunning of the decision tree nodes (default set to `True`). Enables to render more concise STL formulae.
+* `verbose` (optional): print details on the execution of the algorithm (default set to `False`).
 
 Then calls the `recursiveGenerateTree` function, which learns a multiclass STL specification given a set of trajectories `train_trajectories`:
 * `train_trajectories`: list of trajectoryID in `dict_trajectories` you want to train your STL formula on.
@@ -80,6 +82,19 @@ printRootToLeafPath(tree, class_number)
 ```
 
 
+### CLI
+
+The module `learn_multiclass_stl.py` can also be run in a command line:
+
+```
+python learn_multiclass_stl.py --dicttrajectories <dict_trajectories> --dicttrajectoriesclasses <dict_trajectories_classes> --listclasses <list_classes> --minx <min_x> --miny <min_y> --minh <min_h> --maxx <max_x> --maxy <max_y> --maxh <max_h> --maxdepth <max_depth> --stldiff <stl_diff> --verbose <verbose> --cm <cm> --outputmodel <output_model>
+```
+
+where the `--cm` option commands whether to display or not the confusion matrix of the true labels vs. the predicted ones, and the `--outputmodel` option the path to output the multiclass STL formula.
+
+
+
+
 ### Evaluation
 
 ```
@@ -90,7 +105,7 @@ example_based_accuracy(np.array(y_true), np.array(y_pred))
 
 We provide 2 implementations for the evaluation of the multi class STL models. The `hamming_loss` function returns the percentage of incorrectly predicted labels to the total number of labels. The `example_based_accuracy` function returns the proportion of correctly predicted labels to the total number of labels.
 Further, the `evaluate` function returns the true labels and the predicted labels of given trajectories.
-* `tree`: the learned multiclass STL decision tree
+* `tree`: the learned multiclass STL decision tree.
 * `dict_trajectories`: python dict identifying trajectoryID as key, and trajectories as value. A trajectory is a list of values [x_val,y_val], where each list of value represents the value of a trajectory at a given discrete time.
 * `dict_trajectories_classes`: python dict identifying trajectoryID as key, and list of classes as value.
 * `list_classes`: list of the different classes trajectories can belong to.
