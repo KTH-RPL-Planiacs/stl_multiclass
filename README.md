@@ -2,8 +2,6 @@
 Dataset and code to formalize trajectories in human-robot encounters, where trajectories can present multiple labels
 
 
-## Will be moved to planiacs repo 21.02!
-
 
 ## Introduction
 
