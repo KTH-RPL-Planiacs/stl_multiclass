@@ -187,6 +187,10 @@ On the whole dataset, we could learn the following models. Results of the classi
 
 ![Alt text](experiments_img/userstudy_data_cm.PNG)
 
+As a comparison, we show here the confusion matrix we obtain when classifying the same trajectories with the neural network developed in `nn_learn.py`:
+
+![Alt text](experiments_img/userstudy_data_cm_nn.PNG)
+
 The models learned on the entire data can be found in output_models `user_study_data/output_models`.
 
 
