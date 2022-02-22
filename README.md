@@ -16,7 +16,7 @@ We apply our method to a dataset of trajectories collected through an online stu
 
 You can use this API by cloning this repository:
 ```
-$ git clone https://github.com/allinard/stl_multiclass
+$ git clone https://github.com/KTH-RPL-Planiacs/stl_multiclass
 ```
 
 Dependencies:
@@ -155,7 +155,7 @@ Finally, the implementation for the inference of nn-based models can be found in
 
 ### User study data on human-robot encounters
 
-We ran experiments on a dataset of trajectories collected through an online study where participants had to avoid colliding with a robot in a shared environment, and where the participants depicted 3 behaviors: being in a hurry, taking a normal walk, or maximizing safety.
+We ran experiments on a dataset of trajectories collected through an online study where participants had to avoid colliding with a robot in a shared environment, and where the participants depicted 3 behaviors: being in a hurry, taking a normal walk, or maximizing safety (see [video](video/video.mp4)).
 
 ![Alt text](experiments_img/userstudy_data_screenshot.PNG)
 
